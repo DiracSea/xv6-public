@@ -91,10 +91,10 @@ sys_uptime(void)
 }
 
 int 
-sys_lab1(void)
+sys_info(void)
 {
   int m;
   if(argint(0, &m) < 0)
     return -1; 
-  return lab1(m);
+  return info(m);
 }

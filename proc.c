@@ -534,7 +534,7 @@ procdump(void)
 }
 //lab1
 int 
-lab1(int mode) 
+info(int mode) 
 {
   int counter = 0; 
   struct proc *p = myproc(); 

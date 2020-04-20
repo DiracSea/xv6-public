@@ -11,5 +11,5 @@ main(int argc, char *argv[])
     printf(0, "Memory Page Numbers are: %d\n", lab1(3));
     printf(0, "LAB1 END\n");
 
-    exit(0);
+    exit();
 }

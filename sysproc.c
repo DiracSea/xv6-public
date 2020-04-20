@@ -93,8 +93,8 @@ sys_uptime(void)
 int 
 sys_lab1(void)
 {
-  int par;
-  if(argint(0, &par) < 0)
+  int m;
+  if(argint(0, &m) < 0)
     return -1; 
-  return my_lab1(par);
+  return lab1(m);
 }

@@ -533,12 +533,12 @@ procdump(void)
     cprintf("\n");
   }
 }
-
+//lab1
 int 
-my_lab1(int mode) 
+lab1(int mode) 
 {
   int counter = 0; 
-  struct proc *p; 
+  struct proc *p = myproc(); 
   switch (mode) 
   {
     // count of processes
@@ -546,21 +546,25 @@ my_lab1(int mode)
     acquire(&ptable.lock); 
     for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) 
     {
-      if (p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING)
-        counter++; 
+      if(p->state == UNUSED || p->state == ZOMBIE)
+        continue;
+      if(p->state >= 0)
+        counter++;
     }
     release(&ptable.lock);
     return counter;
 
     // count of total number of system calls
     case 2: 
-    p = myproc();
     return p->counter; 
 
   // number of memory pages of current process
     case 3:
-    p = myproc(); 
-    return p->sz / PGSIZE;
+    return PGROUNDUP(p->sz) / PGSIZE;
+
+    default:
+    return -1;
+    break;
   }
   return 22;
 }

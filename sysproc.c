@@ -13,7 +13,7 @@ sys_fork(void)
   return fork();
 }
 
-int
+int 
 sys_exit(void)
 {
   exit();
@@ -88,4 +88,13 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+int 
+sys_lab1(void)
+{
+  int par;
+  if(argint(0, &par) < 0)
+    return -1; 
+  return my_lab1(par);
 }

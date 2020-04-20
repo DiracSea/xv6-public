@@ -5,7 +5,7 @@ struct inode;
 struct pipe;
 struct proc;
 struct rtcdate;
-struct spinlock;
+struct spinlock; 
 struct sleeplock;
 struct stat;
 struct superblock;
@@ -120,6 +120,7 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
+int             my_lab1(int);
 
 // swtch.S
 void            swtch(struct context**, struct context*);

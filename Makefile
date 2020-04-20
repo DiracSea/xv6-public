@@ -12,7 +12,7 @@ OBJS = \
 	log.o\
 	main.o\
 	mp.o\
-	picirq.o\
+	picirq.o\ 
 	pipe.o\
 	proc.o\
 	sleeplock.o\
@@ -181,6 +181,7 @@ UPROGS=\
 	_usertests\
 	_wc\
 	_zombie\
+	_lab1_call\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)

@@ -5,7 +5,7 @@
 #include "mmu.h"
 #include "x86.h"
 #include "proc.h"
-#include "spinlock.h"
+#include "spinlock.h" 
 
 struct {
   struct spinlock lock;
@@ -531,4 +531,35 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+int 
+my_lab1(int mode) 
+{
+  int counter = 0; 
+  struct proc *p; 
+  switch (mode) 
+  {
+    // count of processes
+    case 1: 
+    acquire(&ptable.lock); 
+    for (p = ptable.proc; p < &ptable.proc[NPROC]; p++) 
+    {
+      if (p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING)
+        counter++; 
+    }
+    release(&ptable.lock);
+    return counter;
+
+    // count of total number of system calls
+    case 2: 
+    p = myproc();
+    return p->counter; 
+
+  // number of memory pages of current process
+    case 3:
+    p = myproc(); 
+    return p->sz / PGSIZE;
+  }
+  return 22;
 }
